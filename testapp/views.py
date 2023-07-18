@@ -4,9 +4,11 @@ from testapp.models import Task
 
 
 def home(request):
-    tasks=Task.objects.filter(is_completed=False) # it filters all the tasks which are not completed
+    tasks=Task.objects.filter(is_completed=False) 
+    completed_tasks=Task.objects.filter(is_completed=True)# it filters all the tasks which are not completed
     context={
-        'tasks':tasks
+        'tasks':tasks,
+        'completed_tasks':completed_tasks
     }
 
     return render(request,'testapp/home.html',context)
